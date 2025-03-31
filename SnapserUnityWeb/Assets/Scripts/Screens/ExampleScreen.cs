@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static Dissonity.Api;
+//using static Dissonity.Api;
 using Snapser.Api;
 using Snapser.Client;
 using Snapser.Model;
@@ -15,19 +15,19 @@ public class ExampleScreen : BaseScreen
     async void Start()
     {
         // Show the Discord user id
-        string userId = await GetUserId();
-        Debug.Log($"The user's id is {userId}");
+        // string userId = await GetUserId();
+        // Debug.Log($"The user's id is {userId}");
 
-        SubActivityInstanceParticipantsUpdate((data) =>
-        {
-            Debug.Log("Received a participants update!");
-        });
+        // SubActivityInstanceParticipantsUpdate((data) =>
+        // {
+        //     Debug.Log("Received a participants update!");
+        // });
 
         // Get an Anonymous user id from Snapser
         Configuration config = new Configuration();
         config.BasePath = "https://gateway-accel.snapser.com/q9n92w7o";
         var apiInstance = new AuthServiceApi(config);
-        var anonLoginRequest = new AuthAnonLoginRequest(createUser: true, username: userId);
+        var anonLoginRequest = new AuthAnonLoginRequest(createUser: true, username: "12345");
 
         try
         {
