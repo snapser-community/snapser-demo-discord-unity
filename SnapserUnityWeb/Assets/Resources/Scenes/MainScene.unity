@@ -122,57 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &180909433
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 180909434}
-  - component: {fileID: 180909435}
-  m_Layer: 0
-  m_Name: DiscordBridge
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &180909434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180909433}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 307636240}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &180909435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180909433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b4bd1f73987efd4aa45f98215eda98f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  information: 'There must be a DiscordBridge object (with that exact name) within
-    each scene that needs to interact with Discord.
-
-
-    (Tip: You can place it
-    in your first scene and check ''dontDestroyOnLoad'')'
-  dontDestroyOnLoad: 0
 --- !u!1 &307636238
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,9 +154,19 @@ Transform:
   - {fileID: 4465977067818868126}
   - {fileID: 1517911676}
   - {fileID: 1338837056}
-  - {fileID: 180909434}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &318574498 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4615843480757918894, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+  m_PrefabInstance: {fileID: 1987801409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &324717497 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8872028059853577344, guid: 87883a5bb98424960be3cbaa490fb221, type: 3}
@@ -359,6 +318,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenuScreen: {fileID: 324717497}
   ExampleScreen: {fileID: 1987801412}
+--- !u!114 &1369445255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7702226517058258014, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+  m_PrefabInstance: {fileID: 1987801409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1422027683
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +476,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 307636240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1697152560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1697152562}
+  - component: {fileID: 1697152561}
+  m_Layer: 0
+  m_Name: DiscordBridge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1697152561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697152560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4bd1f73987efd4aa45f98215eda98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  information: 'There must be a DiscordBridge object (with that exact name) within
+    each scene that needs to interact with Discord.
+
+
+    (Tip: You can place it
+    in your first scene and check ''dontDestroyOnLoad'')'
+  dontDestroyOnLoad: 0
+--- !u!4 &1697152562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697152560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1743089028
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,10 +627,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3924445702412321679}
     m_Modifications:
+    - target: {fileID: -5849804241509266870, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: DiscordText
+      value: 
+      objectReference: {fileID: 318574498}
+    - target: {fileID: -5849804241509266870, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: SnapserText
+      value: 
+      objectReference: {fileID: 1369445255}
+    - target: {fileID: 209028175681180114, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_Name
+      value: BackButtonText
+      objectReference: {fileID: 0}
     - target: {fileID: 215722430094075223, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 1987801411}
+    - target: {fileID: 215722430094075223, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: -5849804241509266870, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+    - target: {fileID: 215722430094075223, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 215722430094075223, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnBackClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 466257926053924832, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_Name
+      value: AuthenticateButtonText
+      objectReference: {fileID: 0}
     - target: {fileID: 795829008245069364, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
       propertyPath: m_Name
       value: ExampleScreen
@@ -694,8 +743,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1672279181084111010, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672279181084111010, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672279181084111010, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1987801412}
+    - target: {fileID: 1672279181084111010, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672279181084111010, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAuthenticateClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672279181084111010, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExampleScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672279181084111010, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3543251406100647402, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_Name
+      value: AuthenticateButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341186620883611548, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -441
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389335479379279847, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_Name
+      value: BackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449199145521359328, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_text
+      value: Snapser Id
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113521737055403323, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+      propertyPath: m_Name
+      value: SnapserText
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8113521737055403323, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
@@ -717,7 +815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &1987801412 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2937653117676271527, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
+  m_CorrespondingSourceObject: {fileID: -5849804241509266870, guid: 56bdb57e903e84692ae97466d07a3244, type: 3}
   m_PrefabInstance: {fileID: 1987801409}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -875,6 +973,22 @@ PrefabInstance:
     - target: {fileID: 946407565394539751, guid: 87883a5bb98424960be3cbaa490fb221, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449199145521359328, guid: 87883a5bb98424960be3cbaa490fb221, type: 3}
+      propertyPath: m_text
+      value: "Snapser Discord \nDemo"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449199145521359328, guid: 87883a5bb98424960be3cbaa490fb221, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977806283838648665, guid: 87883a5bb98424960be3cbaa490fb221, type: 3}
+      propertyPath: m_text
+      value: Login
+      objectReference: {fileID: 0}
+    - target: {fileID: 5977806283838648665, guid: 87883a5bb98424960be3cbaa490fb221, type: 3}
+      propertyPath: m_fontSize
+      value: 72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1142,3 +1256,4 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 307636240}
+  - {fileID: 1697152562}

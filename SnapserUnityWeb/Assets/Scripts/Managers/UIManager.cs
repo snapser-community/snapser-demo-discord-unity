@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [Header("Screens")] 
+    [Header("Screens")]
     public MainMenuScreen MainMenuScreen;
     public ExampleScreen ExampleScreen;
 
@@ -19,17 +19,37 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
-        //messy
-        MainMenuScreen.Hide();
-        ExampleScreen.Hide();
-        
+
+        // Initialize screens safely
+        InitializeScreens();
         ShowScreen(MainMenuScreen);
     }
-    
+
+    private void InitializeScreens()
+    {
+        // Ensure MainMenuScreen and ExampleScreen are not null before hiding them
+        if (MainMenuScreen != null)
+        {
+            MainMenuScreen.Hide();
+        }
+        else
+        {
+            Debug.LogError("MainMenuScreen is not assigned in the Inspector!");
+        }
+
+        if (ExampleScreen != null)
+        {
+            ExampleScreen.Hide();
+        }
+        else
+        {
+            Debug.LogError("ExampleScreen is not assigned in the Inspector!");
+        }
+    }
+
     public void ShowScreen(BaseScreen screen)
     {
-        if(_currentScreen != null)
+        if (_currentScreen != null)
         {
             _currentScreen.Hide();
         }

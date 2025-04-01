@@ -1,14 +1,18 @@
 using System;
 using TMPro;
 using UnityEngine;
-//using static Dissonity.Api;
+using static Dissonity.Api;
 using Snapser.Api;
 using Snapser.Client;
 using Snapser.Model;
 
+
 public class ExampleScreen : BaseScreen
 {
-    public TextMeshProUGUI TextLabel;
+    public TextMeshProUGUI DiscordText;
+
+    public TextMeshProUGUI SnapserText;
+
 
     private const string discordId = "1354572144436183261";
     private Configuration _snapserConfig;
@@ -34,28 +38,10 @@ public class ExampleScreen : BaseScreen
         _snapserConfig = config;
     }
 
-    async void Start()
-    {
-        // Initialize the Snapser API client
-        var apiInstance = new AuthServiceApi(_snapserConfig);
-        var anonLoginRequest = new AuthAnonLoginRequest(createUser: true, username: "12345");
+    // async void Start()
+    // {
 
-        try
-        {
-            // Anonymous Login
-            AuthAnonLoginResponse result = await apiInstance.AnonLoginAsync(anonLoginRequest);
-            Debug.Log(result.User.Id);
-            TextLabel.text = result.User.Id;
-            Debug.Log("Done!");
-        }
-        catch (ApiException e)
-        {
-            Debug.LogError("Exception when calling AuthServiceApi.AnonLogin: " + e.Message);
-            Debug.LogError("Status Code: " + e.ErrorCode);
-            Debug.LogError(e.StackTrace);
-            TextLabel.text = "Unable to login";
-        }
-    }
+    // }
 
 
     public override void Show()
@@ -67,4 +53,45 @@ public class ExampleScreen : BaseScreen
     {
         UIManager.Instance.ShowScreen(UIManager.Instance.MainMenuScreen);
     }
+
+    public async void OnAuthenticateClicked()
+    {
+        if (SnapserText == null || DiscordText == null)
+        {
+            Debug.LogError("SnapserText or DiscordText is not assigned in the inspector.");
+            return;
+
+        }
+        SnapserText.text = "";
+        if (DiscordText != null)
+        {
+            DiscordText.text = "Authenticating with Discord...";
+        }
+
+        string userId = await GetUserId();
+        Debug.Log($"The user's id is {userId}");
+        DiscordText.text = "Discord ID: " + userId;
+
+        // Initialize the Snapser API client
+        SnapserText.text = "Authenticating with Snapser...";
+        var apiInstance = new AuthServiceApi(_snapserConfig);
+        var anonLoginRequest = new AuthAnonLoginRequest(createUser: true, username: userId);
+
+        try
+        {
+            // Anonymous Login
+            AuthAnonLoginResponse result = await apiInstance.AnonLoginAsync(anonLoginRequest);
+            Debug.Log(result.User.Id);
+            SnapserText.text = result.User.Id;
+            Debug.Log("Done!");
+        }
+        catch (ApiException e)
+        {
+            Debug.LogError("Exception when calling AuthServiceApi.AnonLogin: " + e.Message);
+            Debug.LogError("Status Code: " + e.ErrorCode);
+            Debug.LogError(e.StackTrace);
+            SnapserText.text = "Unable to login";
+        }
+    }
 }
+
