@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 //using static Dissonity.Api;
@@ -7,26 +6,38 @@ using Snapser.Api;
 using Snapser.Client;
 using Snapser.Model;
 
-
 public class ExampleScreen : BaseScreen
 {
     public TextMeshProUGUI TextLabel;
 
+    private const string discordId = "1354572144436183261";
+    private Configuration _snapserConfig;
+
+    private void Awake()
+    {
+        Configuration config = new Configuration();
+#if DISCORD_BUILD
+#if UNITY_EDITOR
+        // Assuming you might want to log or do something specific when in Editor for Discord build
+        Debug.Log("Using the Discord build in Editor");
+#else
+            // string discordAddress = $"{uri.Scheme}://{clientId}.discordsays.com/.proxy/{domain}/{subdomain}{uri.path}";
+            // string currentBasePath = config.BasePath;
+            // Uri uri = new Uri(currentBasePath);
+            config.BasePath = string.Format("https://{0}.discordsays.com/.proxy/", discordId);
+            Debug.Log("Using the Discord build in Production");
+            Debug.Log("Snapser URL via Discord is: " + config.BasePath);
+#endif
+#else
+        Debug.Log("Not using the Discord build");
+#endif
+        _snapserConfig = config;
+    }
+
     async void Start()
     {
-        // Show the Discord user id
-        // string userId = await GetUserId();
-        // Debug.Log($"The user's id is {userId}");
-
-        // SubActivityInstanceParticipantsUpdate((data) =>
-        // {
-        //     Debug.Log("Received a participants update!");
-        // });
-
-        // Get an Anonymous user id from Snapser
-        Configuration config = new Configuration();
-        config.BasePath = "https://gateway-accel.snapser.com/q9n92w7o";
-        var apiInstance = new AuthServiceApi(config);
+        // Initialize the Snapser API client
+        var apiInstance = new AuthServiceApi(_snapserConfig);
         var anonLoginRequest = new AuthAnonLoginRequest(createUser: true, username: "12345");
 
         try

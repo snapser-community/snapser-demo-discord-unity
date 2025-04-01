@@ -49,6 +49,17 @@ You will now get a Zip file that you should save it to your machine.
 </linker>
 ```
 
+### Add a Discord Code Symbol
+1. Open Build Settings: Go to File -> Build Settings.
+
+2. Open Player Settings: With WebGL platform selected, click on Player Settings.
+
+3. Add Custom Scripting Define Symbols: In the Player settings panel, find the Scripting Define Symbols under the Other Settings section. Enter a custom symbol - DISCORD_BUILD.
+
+## Important files
+1. link.xml
+2. Editor/ModifyWebGLBuildPath.cs
+
 ## Build
 1. Go to Unity Build settings and make sure you have selected WebGl.
 2. Click build and pick a folder to place the output of the build.
