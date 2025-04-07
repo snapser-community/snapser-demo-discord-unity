@@ -1,7 +1,7 @@
 {
-  "name": "dissonity-base-project",
+  "name": "snapser-dissonity-base-project",
   "version": "0.2.0",
-  "description": "Dissonity example Node.js app",
+  "description": "Snapser Dissonity example app",
   "scripts": {
     "build": "npx tsc --project tsconfig.emit.json && node ./src/scripts/build.js",
     "execute": "node build/server/index.js",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "cross-fetch": "^3.1.5",
-    "dissonity": "^1.4.0",
+    "snapser-dissonity": "^1.5.0",
     "dotenv": "^16.0.3",
     "esbuild": "0.17.11",
     "express": "^4.18.2"

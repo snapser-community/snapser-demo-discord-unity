@@ -69,8 +69,14 @@ public class ExampleScreen : BaseScreen
         }
 
         string userId = await GetUserId();
+        string userAccessToken = await GetAccessToken();
         Debug.Log($"The user's id is {userId}");
-        DiscordText.text = "Discord ID: " + userId;
+        Debug.Log($"The user's access token is {userAccessToken}");
+        // Create a short version of the userId and userAccessToken
+        string shortUserId = userId.Length >= 3 ? userId[..3] : userId;
+        string shortUserAccessToken = userAccessToken.Length >= 3 ? userAccessToken[..3] : userAccessToken;
+        //Set the text
+        DiscordText.text = $"Id: {shortUserId}... Token: {shortUserAccessToken}...";
 
         // Initialize the Snapser API client
         SnapserText.text = "Authenticating with Snapser...";
