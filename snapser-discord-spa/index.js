@@ -10209,9 +10209,13 @@
     const response = await (0, import_cross_fetch.default)(`/.proxy${options.tokenRoute}`, {
       method: options.method,
       headers,
-      body: JSON.stringify({ code })
+      body: JSON.stringify({ code: code, create_user: true, access_token: '' })
     });
+    console.log("Response from token route");
+    console.log(response)
     const data = await response.json();
+    console.log("Data from token route");
+    console.log(data)
     if (!data.access_token) {
       throw new Error("No access_token field found in response data");
     }
@@ -10463,9 +10467,8 @@
     setupSdk({
       clientId: "1354572144436183261",
       scope: ["identify"],
-      tokenRoute: "/v1/byosnap-discord/auth/token",
-      method: "POST",
-      apiKey: "07360b5fddb88f450e0663cdf7ef4667"
+      tokenRoute: "/v1/auth/discord/login",
+      method: "PUT",
     });
   });
 })();
