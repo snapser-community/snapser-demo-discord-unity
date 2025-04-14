@@ -26,8 +26,6 @@ public class ExampleScreen : BaseScreen
         Debug.Log("Using the Discord build in Editor");
 #else
             // string discordAddress = $"{uri.Scheme}://{clientId}.discordsays.com/.proxy/{domain}/{subdomain}{uri.path}";
-            // string currentBasePath = config.BasePath;
-            // Uri uri = new Uri(currentBasePath);
             config.BasePath = string.Format("https://{0}.discordsays.com/.proxy/", discordId);
             Debug.Log("Using the Discord build in Production");
             Debug.Log("Snapser URL via Discord is: " + config.BasePath);
@@ -68,36 +66,46 @@ public class ExampleScreen : BaseScreen
             DiscordText.text = "Authenticating with Discord...";
         }
 
+        //Get the Discord User Id and the Access token from Snapser Dissonity
         string userId = await GetUserId();
         string userAccessToken = await GetAccessToken();
-        Debug.Log($"The user's id is {userId}");
-        Debug.Log($"The user's access token is {userAccessToken}");
+        Debug.Log($"Discord id is {userId}");
+        Debug.Log($"Discord access token is {userAccessToken}");
         // Create a short version of the userId and userAccessToken
         string shortUserId = userId.Length >= 3 ? userId[..3] : userId;
         string shortUserAccessToken = userAccessToken.Length >= 3 ? userAccessToken[..3] : userAccessToken;
         //Set the text
         DiscordText.text = $"Id: {shortUserId}... Token: {shortUserAccessToken}...";
 
-        // Initialize the Snapser API client
+#if DISCORD_BUILD
+#if UNITY_EDITOR
+        Debug.Log("Using the Discord build in Editor. OnAuthenticateClicked() method.");
+#else
+        // Initialize the Snapser API client for authenticating with Discord
         SnapserText.text = "Authenticating with Snapser...";
         var apiInstance = new AuthServiceApi(_snapserConfig);
-        var anonLoginRequest = new AuthAnonLoginRequest(createUser: true, username: userId);
-
+        var discordLoginRequest = new AuthDiscordLoginRequest(accessToken: userAccessToken, code: "", createUser: true);
         try
         {
-            // Anonymous Login
-            AuthAnonLoginResponse result = await apiInstance.AnonLoginAsync(anonLoginRequest);
+            AuthDiscordLoginResponse result = await apiInstance.DiscordLoginAsync(discordLoginRequest);
+            //You now have a Snapser Identity that is tied to Discord
+            //You can now use User.Id and User.SessionToken to hit any other APIs
             Debug.Log(result.User.Id);
             SnapserText.text = result.User.Id;
             Debug.Log("Done!");
         }
         catch (ApiException e)
         {
-            Debug.LogError("Exception when calling AuthServiceApi.AnonLogin: " + e.Message);
+            Debug.LogError("Exception when calling AuthServiceApi.DiscordLogin: " + e.Message);
             Debug.LogError("Status Code: " + e.ErrorCode);
             Debug.LogError(e.StackTrace);
             SnapserText.text = "Unable to login";
         }
+#endif
+#else
+        Debug.Log("Not using the Discord build. OnAuthenticateClicked() method.");
+#endif
     }
+
 }
 
