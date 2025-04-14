@@ -106,5 +106,6 @@ public class ExampleScreen : BaseScreen
         Debug.Log("Not using the Discord build. OnAuthenticateClicked() method.");
 #endif
     }
+
 }
 
