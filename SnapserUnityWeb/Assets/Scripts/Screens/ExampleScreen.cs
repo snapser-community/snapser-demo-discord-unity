@@ -90,7 +90,8 @@ public class ExampleScreen : BaseScreen
             AuthDiscordLoginResponse result = await apiInstance.DiscordLoginAsync(discordLoginRequest);
             //You now have a Snapser Identity that is tied to Discord
             //You can now use User.Id and User.SessionToken to hit any other APIs
-            Debug.Log(result.User.Id);
+            Debug.Log($"Snapser id is {result.User.Id}");
+            Debug.Log($"Snapser session token is {result.User.SessionToken}");
             SnapserText.text = result.User.Id;
             Debug.Log("Done!");
         }
