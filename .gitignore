@@ -76,7 +76,7 @@ AssetStoreTools*
 # Exclude any NuGet Packages
 *.nupkg
 # Nuget Packages Directory
-packages/
+# packages/
 
 # Exclude ReSharper directory
 _ReSharper*/
