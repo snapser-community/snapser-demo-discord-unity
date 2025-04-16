@@ -1,3 +1,9 @@
+# Ensure the WebGL build folder to not be ignored
+!snapser-discord-spa/
+!snapser-discord-spa/nested/
+!snapser-discord-spa/nested/Build/
+!snapser-discord-spa/nested/Build/**
+
 # This .gitignore file is tailored for Unity projects and Node.js projects.
 snapser-discord-activity/
 byosnap-discord/
@@ -6,7 +12,7 @@ byosnap-discord/
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Bb]uild/
+SnapserUnityWeb/**/[Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
@@ -176,7 +182,8 @@ typings/
 # TypeScript compiled files
 *.tsbuildinfo
 dist/
-build/
+client-dev/snapser-dissonity-node/build
+client-dev/snapser-dissonity-node/src/client/nested/Build/
 
 # Stylelint cache
 .stylelintcache

@@ -69,8 +69,8 @@ public class ExampleScreen : BaseScreen
         //Get the Discord User Id and the Access token from Snapser Dissonity
         string userId = await GetUserId();
         string userAccessToken = await GetAccessToken();
-        Debug.Log($"Discord id is {userId}");
-        Debug.Log($"Discord access token is {userAccessToken}");
+        Debug.Log($"[April 16, 2025] Discord id is {userId}");
+        Debug.Log($"[April 16, 2025] Discord access token is {userAccessToken}");
         // Create a short version of the userId and userAccessToken
         string shortUserId = userId.Length >= 3 ? userId[..3] : userId;
         string shortUserAccessToken = userAccessToken.Length >= 3 ? userAccessToken[..3] : userAccessToken;
@@ -90,8 +90,8 @@ public class ExampleScreen : BaseScreen
             AuthDiscordLoginResponse result = await apiInstance.DiscordLoginAsync(discordLoginRequest);
             //You now have a Snapser Identity that is tied to Discord
             //You can now use User.Id and User.SessionToken to hit any other APIs
-            Debug.Log($"Snapser id is {result.User.Id}");
-            Debug.Log($"Snapser session token is {result.User.SessionToken}");
+            Debug.Log($"[April 16, 2025] Snapser id is {result.User.Id}");
+            Debug.Log($"[April 16, 2025] Snapser session token is {result.User.SessionToken}");
             SnapserText.text = result.User.Id;
             Debug.Log("Done!");
         }
