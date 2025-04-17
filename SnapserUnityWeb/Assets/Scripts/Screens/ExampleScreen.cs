@@ -5,6 +5,7 @@ using static Dissonity.Api;
 using Snapser.Api;
 using Snapser.Client;
 using Snapser.Model;
+using NativeWebSocket;
 
 
 public class ExampleScreen : BaseScreen
@@ -16,6 +17,9 @@ public class ExampleScreen : BaseScreen
 
     private const string discordId = "1354572144436183261";
     private Configuration _snapserConfig;
+
+    private WebSocket websocket;
+
 
     private void Awake()
     {
@@ -36,10 +40,60 @@ public class ExampleScreen : BaseScreen
         _snapserConfig = config;
     }
 
-    // async void Start()
-    // {
+    private void Update()
+    {
+#if !UNITY_WEBGL || UNITY_EDITOR
+        websocket?.DispatchMessageQueue();
+#endif
+    }
 
-    // }
+    private async void OnApplicationQuit()
+    {
+        if (websocket != null)
+            await websocket.Close();
+    }
+
+
+    private async void ConnectToSnapserSocket(string sessionToken = "")
+    {
+        if (websocket != null)
+        {
+            Debug.LogWarning("WebSocket already connected. Closing the existing connection.");
+            await websocket.Close();
+        }
+
+        // Use the session token if provided
+        string snapserSocketUrl = $"wss://{discordId}.discordsays.com/.proxy/v1/relay/ws?token={sessionToken}";
+        websocket = new WebSocket(snapserSocketUrl);
+
+        websocket.OnOpen += () =>
+        {
+            Debug.Log("Connection open!");
+            SnapserText.text += "\nWebSocket connected!";
+        };
+
+        websocket.OnError += (e) =>
+        {
+            Debug.LogError("WebSocket Error: " + e);
+            SnapserText.text += $"\nWebSocket error: {e}";
+        };
+
+        websocket.OnClose += (e) =>
+        {
+            Debug.LogWarning("WebSocket closed with code: " + e);
+            SnapserText.text += $"\nWebSocket closed: {e}";
+        };
+
+        websocket.OnMessage += (bytes) =>
+        {
+            string message = System.Text.Encoding.UTF8.GetString(bytes);
+            Debug.Log("WebSocket Message: " + message);
+            SnapserText.text += $"\nWS: {message}";
+        };
+
+        await websocket.Connect();
+    }
+
 
 
     public override void Show()
@@ -93,6 +147,9 @@ public class ExampleScreen : BaseScreen
             Debug.Log($"[Unity 6] Snapser id is {result.User.Id}");
             Debug.Log($"[Unity 6] Snapser session token is {result.User.SessionToken}");
             SnapserText.text = result.User.Id;
+            //Connect to the Snapser WebSocket
+            ConnectToSnapserSocket(result.User.SessionToken);
+            //You can now use the WebSocket to send and receive messages
             Debug.Log("Done!");
         }
         catch (ApiException e)
