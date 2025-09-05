@@ -141,7 +141,7 @@ public class ExampleScreen : BaseScreen
         var discordLoginRequest = new AuthDiscordLoginRequest(accessToken: userAccessToken, code: "", createUser: true);
         try
         {
-            AuthDiscordLoginResponse result = await apiInstance.DiscordLoginAsync(discordLoginRequest);
+            AuthDiscordLoginResponse result = await apiInstance.AuthDiscordLoginAsync(discordLoginRequest);
             //You now have a Snapser Identity that is tied to Discord
             //You can now use User.Id and User.SessionToken to hit any other APIs
             Debug.Log($"[Unity 6] Snapser id is {result.User.Id}");
