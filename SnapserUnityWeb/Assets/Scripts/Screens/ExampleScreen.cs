@@ -30,7 +30,7 @@ public class ExampleScreen : BaseScreen
         Debug.Log("Using the Discord build in Editor");
 #else
             // string discordAddress = $"{uri.Scheme}://{clientId}.discordsays.com/.proxy/{domain}/{subdomain}{uri.path}";
-            config.BasePath = string.Format("https://{0}.discordsays.com/.proxy/", discordId);
+            config.BasePath = string.Format("https://{0}.discordsays.com/.proxy", discordId);
             Debug.Log("Using the Discord build in Production");
             Debug.Log("Snapser URL via Discord is: " + config.BasePath);
 #endif
